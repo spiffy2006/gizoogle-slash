@@ -4,7 +4,10 @@ exports.handler = function(event, context, callback) {
   translate(event.queryStringParameters.text).then(translation => {
     callback(null, {
       statusCode: 200,
-      body: translation
+      body: {
+        "response_type": "in_channel",
+        "text": translation
+      }
     })
   })
 }
